@@ -1,0 +1,238 @@
+'''''''''''''
+Hello Javascript
+''''''''''''''''
+
+HTML body section- <h1>Hello from HTML!</h1>
+index.js -  console.log('Hello from JavaScript!');
+
+
+'''''''''''''''''''''
+Timer Element
+'''''''''''''''''''''
+
+HTML body section - <h1>It's been <span id="timer">0</span> seconds since you loaded the page...</h1>
+index.js - setInterval(function(){ 
+          let timerElement = document.getElementById('timer');
+          let currentTime = timerElement.innerHTML;
+          currentTime++;
+          timerElement.innerHTML = currentTime;
+        }, 1000);
+
+''''''''''''''''''''''
+Window, Document and body
+'''''''''''''''''''''''''
+
+HTML -  <body style="bgcolor: #fafafa;">
+      <h2>Current innerWidth: 
+          <span id="innerWidth"></span>
+      </h2>
+      <h2>Current innerHeight: 
+          <span id="innerHeight"></span>
+      </h2>
+      <h2>Current outerWidth: 
+          <span id="outerWidth"></span>
+      </h2>
+      <h2>Current outerHeight: 
+          <span id="outerHeight"></span>
+      </h2>
+
+      <h2>Current Document Title:
+          <span id="title"></span>
+      </h2>
+
+Javascript - document.getElementById('innerWidth').innerHTML = window.innerWidth;
+document.getElementById('innerHeight').innerHTML = window.innerHeight;
+document.getElementById('outerWidth').innerHTML = window.outerWidth;
+document.getElementById('outerHeight').innerHTML = window.outerHeight;
+
+document.getElementById('title').innerHTML = document.title;
+
+document.body.onload = function() {
+    console.log('We can call various methods of the body object as well, such as this one, body.onload, which gets called when loading is complete! Now we know that the body has been loaded!');
+}
+
+'''''''''''''''''''''''''''
+Getting Elements by Tag name
+''''''''''''''''''''''''''''''
+HTML -
+      <p>First Paragraph</p>
+      <p>Second Paragraph</p>
+      <p>Third Paragraph</p>
+      <p>Fourth Paragraph</p>
+      <p>Fifth Paragraph</p>
+      <p id="specific">Specific Paragraph</p>
+
+JavaScript -
+
+let paragraphs = document.getElementsByTagName('p');
+
+// All paragraphs
+console.log('The HTMLCollection contains:', paragraphs);
+console.log(paragraphs.item(4).textContent);
+console.log(paragraphs[4].textContent);
+
+
+// Iterate and print all their texts:
+for(let i = 0; i < paragraphs.length; i++) {
+    console.log('This is the', paragraphs[i].textContent);
+}
+
+// Get a specific index:
+console.log("Index 2 is:", paragraphs[2].textContent);
+
+// Same as above, but using the .item() method:
+console.log("Index 4 is:", paragraphs.item(4).textContent);
+
+// Get the specific paragraph, log its id attribute:
+console.log('The specific paragraph has an id of:', paragraphs.namedItem('specific').id);
+
+
+
+
+
+
+
+
+
+
+
+HTML -
+
+<div>
+		<h1>First h1 tag</h1>
+		<p>My tag name is p and I am inside a div element whose tag name is div.</p> 
+		<p>Using a tag name returns a collection of all the elements in the HTML document that use that tag, but you can also select a specific element by its tag name.</p>
+</div>
+<section>
+		<h1>Second h1 tag</h1>
+		<p>My tag name is p and I am inside an element whose tag name is section</p>
+</section>
+
+CSS - 
+
+body {
+	margin: 0 30px;
+}
+
+div, section {
+	border: 1px solid black;
+	padding: 0 10px;
+	margin-bottom: 10px;
+}
+
+Javascript - 
+
+let pElements = document.getElementsByTagName('p');
+console.log(pElements)
+let secondH1 = document.getElementsByTagName('h1') [1];
+console.log(secondH1);
+
+
+' '''''''''''''''''''''''''''
+' Getting Elements by Class name
+' ''''''''''''''''''''''''''''''
+HTML - 
+
+ <h1 class="blue">Hello! I'm a blue heading!</h1>
+    <h2>...but I'm not...</h2>
+    <p class="blue">I'm a blue paragraph. I also have the blue class.</p>
+    <button class="blue">Blue buttons will be found too</button>
+    <div class="blue" id="blue-div">
+      <p>I'm a div with both a class and an id.</p>
+    </div>
+    <div id="another-blue-div">
+      <p>I'm a div with an id, but missing the "blue" class.</p>
+    </div>
+
+
+CSS - 
+.blue {
+    background: lightblue;
+    color: blue;
+    width: fit-content;
+}
+
+
+JavaScript - 
+let blueThings = document.getElementsByClassName('blue');
+
+// All items with class="blue"
+console.log('The HTMLCollection contains:', blueThings);
+
+// Iterate and print all their texts:
+for(let i = 0; i < blueThings.length; i++) {
+  console.log('Index ' + i + ' in the collection: ' + blueThings[i].textContent);
+}
+
+// Get a specific index:
+console.log("Index 2 is:", blueThings[2].textContent);
+
+// Same as above, but using the .item() method:
+console.log("Index 4 is:", blueThings.item(3).textContent);
+
+// Get the item with class="blue" and id="blue-div" and log its tag name:
+console.log('The item with id="blue-div" is a', blueThings.namedItem('blue-div').tagName, 'element.');
+
+// The other div is not in the collection since it doesn't have the "blue" class. The namedItem() method returns null
+console.log('The item with id="another-blue-div" is', blueThings.namedItem('another-blue-div'));
+
+
+HTML - 
+
+    <div class="main">
+		<h1 class="main-header">I use a class name</h1>
+		<p class="main-content">I use a class name to make targeting me more specific.</p> 
+		<p class="main-content">I use the same class name as the other paragraphs in this div element, but it is not the same as the class name used for the paragraphs located in the section element below. This means we can be targeted and changed without affecting any other paragraph that do not use this classname.</p>
+		<p class="main-content">Using a class name allows for more specific targeting then using a tag name.</p>
+
+	</div>
+	<section>
+		<h1 class="section-header">I use a class name</h1>
+		<p class="section-content">I use a class name</p>
+		<p class="section-content">I use a class name</p>
+	</section>
+
+CSS - 
+body {
+	margin: 0 30px;
+}
+
+div, section {
+	border: 1px solid black;
+	padding: 0 10px;
+	margin-bottom: 10px;
+}
+
+JavaScript-
+let mainContent = document.getElementsByClassName('main-content');
+console.log(mainContent)
+let second = document.getElementsByClassName('section-content') [1];
+console.log(second)
+
+
+'''''''''''''''''''''''''''
+Getting Elements by Id name
+''''''''''''''''''''''''''''''
+
+HTML - 
+<h1 id="first-heading">This is the first heading</h1>
+    <h1 id="second-heading">This is the second heading</h1>
+    <h1 id="third-heading">This is the third heading</h1>
+    <h1 id="fourth-heading">This is the fourth heading</h1>
+
+Javascript - 
+
+let firstHeading = document.getElementById('first-heading');
+let secondHeading = document.getElementById('second-heading');
+let thirdHeading = document.getElementById('third-heading');
+let fourthHeading = document.getElementById('fourth-heading');
+
+console.log('Text content of the first heading is:', firstHeading.textContent);
+console.log('Text content of the second heading is:', secondHeading.textContent);
+console.log('Text content of the third heading is:', thirdHeading.textContent);
+console.log('Text content of the fourth heading is:', fourthHeading.textContent);
+
+
+
+
+
