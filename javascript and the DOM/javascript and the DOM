@@ -232,7 +232,27 @@ console.log('Text content of the second heading is:', secondHeading.textContent)
 console.log('Text content of the third heading is:', thirdHeading.textContent);
 console.log('Text content of the fourth heading is:', fourthHeading.textContent);
 
+HTML - 
+<section>
+    <h1 class="section-header">Targeting an element by id</h1>
+    <p id="special">I use an <strong>id</strong>, having an id allows for an element to be targeted even more specifically than when using either a class name or a tag name, as it will be the only element to have that particular id.</p>
+    <p class="section-content">I use a class name</p>
+</section>
 
+CSS - 
+body {
+	margin: 0 30px;
+}
+
+div, section {
+	border: 1px solid black;
+	padding: 0 10px;
+	margin-bottom: 10px;
+}
+
+JavaScript - 
+let special = document.getElementById('special');
+console.log(special);
 
 
 
